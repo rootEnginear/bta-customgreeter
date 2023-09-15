@@ -6,6 +6,7 @@ import net.minecraft.server.net.handler.NetLoginHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import rootenginear.customgreeter.CustomGreeter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +29,7 @@ public class NetLoginHandlerMixin {
             Matcher nameMatch = namePattern.matcher(str);
             if (nameMatch.matches()) {
                 final String name = nameMatch.group(1);
-                return new Packet3Chat(name + "§4 continues their adventure. §lSay hi!");
+                return new Packet3Chat(CustomGreeter.WELCOME_STR.replace("{PLAYER}", name));
             }
             return packet;
         }

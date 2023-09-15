@@ -1,12 +1,12 @@
 package rootenginear.customgreeter.mixin;
 
-import net.minecraft.core.net.command.TextFormatting;
 import net.minecraft.core.net.packet.Packet;
 import net.minecraft.core.net.packet.Packet3Chat;
 import net.minecraft.server.net.handler.NetServerHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import rootenginear.customgreeter.CustomGreeter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +29,7 @@ public class NetServerHandlerMixin {
             Matcher nameMatch = namePattern.matcher(str);
             if (nameMatch.matches()) {
                 final String name = nameMatch.group(1);
-                return new Packet3Chat("§2Farewell adventurer, " + name + "§2!");
+                return new Packet3Chat(CustomGreeter.FAREWELL_STR.replace("{PLAYER}", name));
             }
             return packet;
         }
@@ -52,7 +52,7 @@ public class NetServerHandlerMixin {
             Matcher nameMatch = namePattern.matcher(str);
             if (nameMatch.matches()) {
                 final String name = nameMatch.group(1);
-                return new Packet3Chat(name + "§4 got §e§l§oYEETED§4 from the server!");
+                return new Packet3Chat(CustomGreeter.KICK_STR.replace("{PLAYER}", name));
             }
             return packet;
         }

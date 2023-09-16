@@ -15,6 +15,8 @@ public class CustomGreeter implements ModInitializer {
     public static String WELCOME_STR;
     public static String FAREWELL_STR;
     public static String KICK_STR;
+    public static int WELCOME_SOUND;
+    public static int FAREWELL_SOUND;
 
     @Override
     public void onInitialize() {
@@ -23,6 +25,8 @@ public class CustomGreeter implements ModInitializer {
         WELCOME_STR = propertyManagerObj.getStringProperty("welcome-text", "{PLAYER}§4 joined the game.");
         FAREWELL_STR = propertyManagerObj.getStringProperty("farewell-text", "{PLAYER}§4 left the game.");
         KICK_STR = propertyManagerObj.getStringProperty("kicked-text", "{PLAYER}§4 was kicked from the game.");
+        WELCOME_SOUND = propertyManagerObj.getIntProperty("welcome-soundevent", 0);
+        FAREWELL_SOUND = propertyManagerObj.getIntProperty("farewell-soundevent", 0);
 
         WELCOME_STR = WELCOME_STR.isEmpty() ? "{PLAYER}§4 joined the game." : WELCOME_STR;
         FAREWELL_STR = FAREWELL_STR.isEmpty() ? "{PLAYER}§4 left the game." : FAREWELL_STR;

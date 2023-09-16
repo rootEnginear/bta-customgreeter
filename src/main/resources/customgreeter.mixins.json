@@ -1,15 +1,14 @@
 {
-    "required": true,
-    "minVersion": "0.8",
-    "package": "rootenginear.customgreeter.mixin",
-    "compatibilityLevel": "JAVA_8",
-    "mixins": [
-        "NetLoginHandlerMixin",
-        "NetServerHandlerMixin"
-    ],
-    "client": [
-    ],
-    "injectors": {
-        "defaultRequire": 1
+  "required": true,
+  "minVersion": "0.8",
+  "package": "rootenginear.customgreeter.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "server": [
+    "NetLoginHandlerMixin",
+    "NetServerHandlerMixin",
+    "ServerConfigurationManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
   }
 }
